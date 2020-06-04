@@ -1,11 +1,13 @@
 import cv2
 import dlib
+
 cap = cv2.VideoCapture('highway.mp4')
 
 def findCenter(x,y,w,h):
     cx = int((x+w)/2)
     cy = int((y+h)/2)
     return cx,cy
+
 def pointInRect(x,y,w,h,cx,cy):
     x1, y1 = cx,cy
     if (x < x1 and x1 < x+w):
@@ -13,6 +15,7 @@ def pointInRect(x,y,w,h,cx,cy):
             return True
     else:
         return False
+    
 def main():
     fgbg =  cv2.bgsegm.createBackgroundSubtractorMOG()
     count=0
@@ -88,8 +91,6 @@ def main():
         if cv2.waitKey(30) & 0xFF == ord('q'):
             break
     cap.release()
-    writer.release()
-
     cv2.destroyAllWindows()
 
 
