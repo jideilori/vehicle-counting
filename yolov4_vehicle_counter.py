@@ -10,7 +10,7 @@ inpWidth = 416       #Width of network's input image
 inpHeight = 416      #Height of network's input image
 
 # Load names of classes
-classesFile = "coco.names";
+classesFile = "res/coco.names";
 classes = None
 with open(classesFile, 'rt') as f:
     classes = f.read().rstrip('\n').split('\n')
@@ -182,7 +182,8 @@ while True :
     cv2.putText(frame_o,f"OUT:{outCount}",
                     (550,40),Font,1,(255,0,0),2)
 
-
+    cv2.namedWindow('frame_o')
+    cv2.moveWindow('frame_o',(0,0))
     cv2.imshow('frame_o',frame_o)
     cv2.imshow('frame_cropped',frame_cropped)
 
